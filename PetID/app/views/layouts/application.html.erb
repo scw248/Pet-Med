@@ -12,19 +12,29 @@
 
   <body>
     <div class="topnav">
-      <a href="#">Sign Up</a>
-      <a href="#">Sign In</a>
+      <% if user_signed_in? %>
+        <li>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
+        </li>
+      <% else %>
+        <li>
+        <%= link_to('Login', new_user_session_path) %>
+        <%= link_to('Sign Up', new_user_registration_path) %>
+        </li>
+      <% end %>
     </div>
 
     <div class="content">
       <h2>PetID</h2>
       <p>Modern Healthcare for Your Pet</p>
     </div>
-
+    <div align="center">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    
     <%= yield %>
 
+    </div>
     <div class="footer">
       <p>Footer</p>
     </div>
