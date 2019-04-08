@@ -1,0 +1,2 @@
+class VetProvider < ApplicationRecord
+end

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  reason_for_visit: MyString
+  date_time: 2019-04-08 18:50:17
+
+two:
+  reason_for_visit: MyString
+  date_time: 2019-04-08 18:50:17

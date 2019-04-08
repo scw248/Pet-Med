@@ -1,0 +1,2 @@
+class VetProvidersController < ApplicationController
+end
