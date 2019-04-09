@@ -32,13 +32,11 @@ body {
 
 /* Style the content */
 .content {
-  background-color: #ddd;
-  padding: 10px;
-  height: 200px; /* Should be removed. Only for demonstration */
+  background-color: white;
 }
 
 /* Style the footer */
 .footer {
-  background-color: #f1f1f1;
+  background-color: lightskyblue;
   padding: 10px;
 }

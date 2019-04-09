@@ -21,7 +21,7 @@ class User < ApplicationRecord
   end
 
   def self.appt_booked
-      where(appt_booked: false)
+    where(appt_booked: false)
   end
 
   def current_user
