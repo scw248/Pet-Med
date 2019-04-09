@@ -19,4 +19,8 @@ class User < ApplicationRecord
       # user.image = auth.info.image # assuming the user model has an image
     end
   end
+
+  def self.appt_booked
+      where(appt_booked: false)
+  end
 end
