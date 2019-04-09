@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_many :pets
+  has_many :appointments
   has_many :vet_providers, through: :appointments
+  accepts_nested_attributes_for :pets
+  accepts_nested_attributes_for :appointments
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
