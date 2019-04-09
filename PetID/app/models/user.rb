@@ -23,4 +23,12 @@ class User < ApplicationRecord
   def self.appt_booked
       where(appt_booked: false)
   end
+
+  def current_user
+    self
+  end
+
+  def has_pets
+    self.pets ? true : false
+  end
 end
