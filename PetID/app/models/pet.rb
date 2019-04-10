@@ -10,7 +10,7 @@ class Pet < ApplicationRecord
   validates :breed, inclusion: { in: bunny_breed, presence: true }, if: :type_bunny
   validates :gender, presence: true
   validates :gender, inclusion: { in: genders, presence: true }
-  validates :birthdate, presence: true  #will probably have to add validation to this field after building form
+  validates :birthdate, presence: true # will probably have to add validation to this field after building form
   validates :weight, presence: true
   validates :weight, numericality: { greater_than_or_equal_to: 0 }
   belongs_to :user
