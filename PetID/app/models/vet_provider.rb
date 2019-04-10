@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class VetProvider < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
-  # validates :name, inclusion: { in: vet_names, presence: true }
-  validates :location, presence: true, uniqueness: true
-  # validates :name, inclusion: { in: vet_locations, presence: true }
-  has_many :users, through: :appointments
+  # validates :name, presence: true, uniqueness: true
+  # # validates :name, inclusion: { in: vet_names, presence: true }
+  # validates :location, presence: true, uniqueness: true
+  # # validates :name, inclusion: { in: vet_locations, presence: true }
+  # has_many :users, through: :appointments
 
   def vet_names
     ['Oz Animal Hospital', 'Mid North Animal Hospital', 'Old Town Animal Care Center', 'McKillip Animal Hospital', 'Petco Veterinary Services',
