@@ -1,1 +1,8 @@
-NEW
+<% form_for @pet do |f| %>
+<%= f.label :name%>
+<%= f.text_field :name %>
+<br>
+<%= f.label :animal_type%>
+<%= f.collection_select @pets_type %>
+<br>
+<%= f.submit %>

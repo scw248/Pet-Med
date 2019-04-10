@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class PetsController < ApplicationController
   def new
     @pet = Pet.new
+    @pets_type = Pet.all.animal_type
   end
 
   def create
@@ -24,11 +27,11 @@ class PetsController < ApplicationController
 
   private
 
-    def pet_params
-      params.require(:pet).permit(:name, :animal_type, :breed, :gender, :birthdate, :weight)
-    end
+  def pet_params
+    params.require(:pet).permit(:name, :animal_type, :breed, :gender, :birthdate, :weight)
+  end
 
-    def pet
-      @pet ||= Pet.find(params[:id])
-    end
+  def pet
+    @pet ||= Pet.find(params[:id])
+  end
 end
