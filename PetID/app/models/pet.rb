@@ -9,8 +9,10 @@ class Pet < ApplicationRecord
   validates :breed, inclusion: { in: cat_breed, presence: true }, if: :type_cat
   validates :breed, inclusion: { in: bunny_breed, presence: true }, if: :type_bunny
   validates :gender, presence: true
-  validates :birthdate, presence: true
-  validates :weight, presence: true # weight should be a positive number
+  validates :gender, inclusion: { in: genders, presence: true }
+  validates :birthdate, presence: true  #will probably have to add validation to this field after building form
+  validates :weight, presence: true
+  validates :weight, numericality: { greater_than_or_equal_to: 0 }
   belongs_to :user
   has_many :appointments, through: :user
 
@@ -27,7 +29,7 @@ class Pet < ApplicationRecord
   end
 
   def cat_breed
-    []
+    ['Russian Blue', 'Persian', 'British Shorthair', 'Scottish Fold', 'Siamese', 'Ragdoll', 'Maine Coon', 'Munchkin', 'Sphynx', 'Abyssinian']
   end
 
   def type_cat
@@ -35,10 +37,14 @@ class Pet < ApplicationRecord
   end
 
   def bunny_breed
-    []
+    ['Holland Lop', 'Rex Rabbit', 'Netherland Dwarf Rabbit', 'Flemish Giant Rabbit', 'Mini Lop']
   end
 
   def type_bunny
     self.breed = 'Bunny'
+  end
+
+  def genders
+    %w[Male Female]
   end
 end
