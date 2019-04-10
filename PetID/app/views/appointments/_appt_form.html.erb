@@ -1,21 +1,9 @@
-<%= form_for @pet do |f| %>
-<%= f.label :name%>
-<%= f.text_field :name %>
+<%= form_for @appointment do |f| %>
+<%= f.label :reason_for_visit%>
+<%= f.collection_select :reason_for_visit, Appointment.all, :reason_for_visit, :reason_for_visit %>
 <br>
-<%= f.label :animal_type%>
-<%= f.collection_select :animal_type, Pet.all, :animal_type, :animal_type %>
-<br>
-<%= f.label :breed %>
-<%= f.collection_select :breed, Pet.all, :breed, :breed %>
-<br>
-<%= f.label :gender %>
-<%= f.collection_select :gender, Pet.all, :gender, :gender %>
-<br>
-<%= f.label :birthdate %>
-<%= f.date_field :birthdate %>
-<br>
-<%= f.label :weight %>
-<%= f.number_field :weight %>
+<%= f.label :date_time %>
+<%= f.date_time_field :date_time %>
 <br>
 <%= f.submit %>
 <% end %>
