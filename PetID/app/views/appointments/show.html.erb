@@ -1,7 +1,7 @@
 <div>
 <p><%= @appointment.reason_for_visit %></p>
 <br>
-<p><%= @appointment.date_time %></p>
+<p><%= @appointment.date_time.strftime('%b %e, %l:%M %p') %></p>
 </div>
 
 <div>
