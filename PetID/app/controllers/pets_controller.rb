@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class PetsController < ApplicationController
-
   def index
-    if
+    if params[:user_id]
       @pets = User.find(params[:user_id]).pets
     else
-      redirect_to root_path
+      flash[:notice] = 'You Currently Do Not Have Any Pets'
+      redirect_to new_pet_path
     end
   end
 

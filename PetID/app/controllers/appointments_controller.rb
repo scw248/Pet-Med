@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class AppointmentsController < ApplicationController
+  def index
+    if params[:user_id]
+      @appointments = User.find(params[:user_id]).appointments
+    else
+      flash[:notice] = 'You Currently Do Not Have Any Appointments'
+      redirect_to new_appointment_path
+    end
+  end
+
   def new
     @appointment = Appointment.new
   end
