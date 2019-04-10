@@ -3,7 +3,6 @@
 class PetsController < ApplicationController
   def new
     @pet = Pet.new
-    @pets_type = Pet.all.animal_type
   end
 
   def create
