@@ -1,0 +1,13 @@
+<div>
+<p><%= @appointment.reason_for_visit %></p>
+<br>
+<p><%= @appointment.date_time_field %></p>
+</div>
+
+<div>
+<%= link_to 'Change Appointment', edit_appointment_path%>
+</div>
+
+<div>
+<%= link_to '+', new_appointment_path%>
+</div>
