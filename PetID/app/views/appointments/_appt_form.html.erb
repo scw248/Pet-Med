@@ -1,0 +1,21 @@
+<%= form_for @pet do |f| %>
+<%= f.label :name%>
+<%= f.text_field :name %>
+<br>
+<%= f.label :animal_type%>
+<%= f.collection_select :animal_type, Pet.all, :animal_type, :animal_type %>
+<br>
+<%= f.label :breed %>
+<%= f.collection_select :breed, Pet.all, :breed, :breed %>
+<br>
+<%= f.label :gender %>
+<%= f.collection_select :gender, Pet.all, :gender, :gender %>
+<br>
+<%= f.label :birthdate %>
+<%= f.date_field :birthdate %>
+<br>
+<%= f.label :weight %>
+<%= f.number_field :weight %>
+<br>
+<%= f.submit %>
+<% end %>

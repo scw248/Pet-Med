@@ -1,0 +1,17 @@
+<div>
+<% @pets.each do |pet|%>
+  <p><%= pet.name %></p>
+  <p><%= pet.animal_type %></p>
+  <p><%= pet.breed %></p>
+  <p><%= pet.gender %></p>
+  <p><%= pet.birthdate %></p>
+  <p><%= pet.weight %></p>
+</div>
+
+<div>
+<%= link_to 'Edit Pet', edit_pet_path%>
+</div>
+
+<div>
+<%= link_to '+', new_pet_path%>
+</div>

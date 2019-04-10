@@ -1,6 +1,15 @@
 # frozen_string_literal: true
 
 class PetsController < ApplicationController
+
+  def index
+    if
+      @pets = User.find(params[:user_id]).pets
+    else
+      redirect_to root_path
+    end
+  end
+
   def new
     @pet = Pet.new
   end
