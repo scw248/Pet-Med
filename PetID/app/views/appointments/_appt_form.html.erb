@@ -3,7 +3,7 @@
 <%= f.collection_select :reason_for_visit, Appointment.all, :reason_for_visit, :reason_for_visit %>
 <br>
 <%= f.label :date_time %>
-<%= f.date_time_field :date_time %>
+<%= f.datetime_field :date_time %>
 <br>
 <%= f.submit %>
 <% end %>
