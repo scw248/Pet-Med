@@ -33,4 +33,8 @@ class User < ApplicationRecord
   def has_pets
     !pets.empty?
   end
+
+  def has_appointments
+    !appointments.empty?
+  end
 end

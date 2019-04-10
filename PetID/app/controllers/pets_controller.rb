@@ -6,8 +6,9 @@ class PetsController < ApplicationController
   end
 
   def create
-    new_pet = Pet.create(pet_params)
-    redirect_to pet_path(new_pet)
+    @pet = Pet.create(pet_params)
+    @pet.user_id = current_user.id
+    redirect_to pet_path(@pet)
   end
 
   def show

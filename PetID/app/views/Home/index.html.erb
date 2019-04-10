@@ -6,5 +6,11 @@
   <h3><%= link_to "My Pets", new_pet_path %></h3>
 <% end %>
 
+<% if current_user.has_appointments%>
+  <h3><%= link_to "My Appointments", user_appointment_path %></h3>
+<% else %>
+  <h3><%= link_to "My Appointments", new_appointment_path %></h3>
+<% end %>
+
 <h3><%= link_to "My Vets", vet_providers_path %></h3>
-<h3><%= link_to "My Appointments", new_appointment_path %></h3>
+
