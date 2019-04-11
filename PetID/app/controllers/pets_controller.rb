@@ -2,9 +2,6 @@
 
 class PetsController < ApplicationController
   def index
-    # if current_user.has_pets
-    #   @pets = current_user.pets
-    #   @user = current_user
     if params[:user_id]
       @pets = User.find(params[:user_id]).pets
       @user = User.find(params[:user_id])
@@ -25,7 +22,7 @@ class PetsController < ApplicationController
 
   def show
     @pet = pet
-    @user = current_user
+    @user = current_user # added this because user_id wasn't working in show view
   end
 
   def edit

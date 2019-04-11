@@ -2,12 +2,12 @@
 
 class AppointmentsController < ApplicationController
   def index
-    if current_user.has_appointments
-      @appointments = current_user.appointments
-      @user = current_user
+    if params[:user_id]
+      @appointments = User.find(params[:user_id]).appointments
+      @user = User.find(params[:user_id])
     else
       flash[:notice] = 'You Currently Do Not Have Any Appointments'
-      redirect_to new_appointment_path
+      redirect_to new_user_appointment_path
     end
   end
 
@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = appointment
-    @user = current_user
+    @user = current_user # added this because user_id wasn't working in show view
   end
 
   def edit
