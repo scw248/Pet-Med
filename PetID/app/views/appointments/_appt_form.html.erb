@@ -2,8 +2,13 @@
 <%= f.label :reason_for_visit%>
 <%= f.collection_select :reason_for_visit, Appointment.all, :reason_for_visit, :reason_for_visit %>
 <br>
+<br>
 <%= f.label :date_time %>
 <%= f.datetime_field :date_time %>
 <br>
+<br>
 <%= f.submit %>
+<br>
+<br>
+<br>
 <% end %>

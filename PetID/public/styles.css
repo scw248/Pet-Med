@@ -51,3 +51,9 @@ body {
   text-emphasis-color: white;
   text-decoration: none;
 }
+
+.buttons {
+  float: right;
+  text-decoration: none;
+  
+}
