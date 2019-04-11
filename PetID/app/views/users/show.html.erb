@@ -1,0 +1,15 @@
+<h2>Welcome <%= current_user.email %>!</h2>
+
+<% if current_user.has_pets%>
+  <h3><%= link_to "My Pets", user_pets_path %></h3>
+<% else %>
+  <h3><%= link_to "My Pets", new_user_pet_path %></h3>
+<% end %>
+
+<% if current_user.has_appointments%>
+  <h3><%= link_to "My Appointments", user_appointments_path %></h3>
+<% else %>
+  <h3><%= link_to "My Appointments", new_user_appointment_path %></h3>
+<% end %>
+
+<%# <h3><%= link_to "My Vets", vet_providers_path %></h3> 
