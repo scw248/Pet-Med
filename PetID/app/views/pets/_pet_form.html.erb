@@ -1,4 +1,5 @@
 <%= form_for @pet do |f| %>
+<%= f.hidden_field :user_id %>
 <%= f.label :name%>
 <%= f.text_field :name %>
 <br>
