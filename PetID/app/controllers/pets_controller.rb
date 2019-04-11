@@ -2,9 +2,12 @@
 
 class PetsController < ApplicationController
   def index
-    if current_user.has_pets
-      @pets = current_user.pets
-      @user = current_user
+    # if current_user.has_pets
+    #   @pets = current_user.pets
+    #   @user = current_user
+    if params[:user_id]
+      @pets = User.find(params[:user_id]).pets
+      @user = User.find(params[:user_id])
     else
       flash[:notice] = 'You Currently Do Not Have Any Pets'
       redirect_to new_user_pet_path
