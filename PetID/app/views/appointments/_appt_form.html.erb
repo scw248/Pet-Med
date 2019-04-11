@@ -1,7 +1,7 @@
 <%= form_for @appointment do |f| %>
 <%= f.hidden_field :user_id %>
-<%= f.pet %>
-<%= f.collection_select :patient, Patient.all, :id, :name %>
+<%= f.label :pet %>
+<%= f.collection_select :pet, Pet.all, :id, :name %>
 <br>
 <br>
 <%= f.label :vet_provider %>
