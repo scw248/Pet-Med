@@ -34,6 +34,10 @@ body {
 .content {
   display: block;
   text-align: center;
+  font-size: 48px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  color: white;
   background-image: url("https://campfire.org/wp-content/uploads/2016/08/e6bffcd2e194a6b1b8317b8f5126f7a409e150d6_Home-slider-2_v2.jpg");
   padding: 10px;
   height: 450px;
@@ -41,7 +45,7 @@ body {
 
 /* Style the footer */
 .footer {
-  background-color: white
+  background-color: rgb(150, 212, 212);
   padding: 5px;
   text-align: center;
   text-emphasis-color: white;
