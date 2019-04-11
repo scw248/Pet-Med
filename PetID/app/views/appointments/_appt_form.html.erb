@@ -1,7 +1,11 @@
 <%= form_for @appointment do |f| %>
 <%= f.hidden_field :user_id %>
+<%= f.pet %>
+<%= f.collection_select :patient, Patient.all, :id, :name %>
+<br>
+<br>
 <%= f.label :vet_provider %>
-<%# <%= f.collection_select :vet_provider, VetProvider.all, :vet_provider, :vet_provider%> %>
+<%= f.collection_select :vet_provider, VetProvider.all, :id, :name %>
 <br>
 <br>
 <%= f.label :reason_for_visit%>
@@ -9,7 +13,7 @@
 <br>
 <br>
 <%= f.label :date_time %>
-<%= f.datetime_field :date_time %>
+<%= f.datetime_select :date_time %>
 <br>
 <br>
 <%= f.submit %>

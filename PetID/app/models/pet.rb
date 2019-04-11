@@ -13,8 +13,8 @@ class Pet < ApplicationRecord
   # validates :birthdate, presence: true # will probably have to add validation to this field after building form
   # validates :weight, presence: true
   # validates :weight, numericality: { greater_than_or_equal_to: 0 }
-  # belongs_to :user
-  # has_many :appointments, through: :user
+  belongs_to :user
+  has_many :appointments, through: :user
 
   # https://stackoverflow.com/questions/13465691/validate-on-inclusion-within-array-of-options-or-be-nil
   TYPES = %w[Dog Cat Bunny].freeze

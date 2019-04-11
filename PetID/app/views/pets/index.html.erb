@@ -1,6 +1,7 @@
+<h2>Your Pets!</h2>
 <div>
 <% @pets.each do |pet|%>
-  <p><%= pet.name %></p>
+  <p><%= link_to pet.name, user_pet_path(@user, pet) %></p>
   <p><%= pet.animal_type %></p>
   <p><%= pet.breed %></p>
   <p><%= pet.gender %></p>
