@@ -12,7 +12,11 @@ class AppointmentsController < ApplicationController
   end
 
   def new
-    @appointment = Appointment.new(user_id: params[:user_id])
+    if params[:user_id] && !User.exists?(params[:user_id])
+      redirect_to new_user_registration_path alert: 'User not found.'
+    else
+      @appointment = Appointment.new(user_id: params[:user_id])
+    end
   end
 
   def create
@@ -26,7 +30,17 @@ class AppointmentsController < ApplicationController
   end
 
   def edit
-    @appointment = appointment
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      if user.nil?
+        redirect_to new_user_registration_path, alert: 'User not found.'
+      else
+        @appointment = user.appointments.find_by(id: params[:id])
+        redirect_to user_appointments_path(user), alert: 'Appointment not found.' if @appointment.nil?
+      end
+    else
+      @appointment = appointment
+    end
   end
 
   def update

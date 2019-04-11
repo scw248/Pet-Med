@@ -12,7 +12,11 @@ class PetsController < ApplicationController
   end
 
   def new
-    @pet = Pet.new(user_id: params[:user_id])
+    if params[:user_id] && !User.exists?(params[:user_id])
+      redirect_to new_user_registration_path alert: 'User not found.'
+    else
+      @pet = Pet.new(user_id: params[:user_id])
+    end
   end
 
   def create
@@ -26,7 +30,17 @@ class PetsController < ApplicationController
   end
 
   def edit
-    @pet = pet
+    if params[:user_id]
+      user = User.find_by(id: params[:user_id])
+      if user.nil?
+        redirect_to new_user_registration_path, alert: 'User not found.'
+      else
+        @pet = user.pets.find_by(id: params[:id])
+        redirect_to user_pets_path(user), alert: 'Pet not found.' if @pet.nil?
+      end
+    else
+      @pet = pet
+    end
   end
 
   def update
