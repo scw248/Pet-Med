@@ -11,7 +11,7 @@ class PetsController < ApplicationController
   end
 
   def new
-    @pet = Pet.new(user_id: params[:user_id])
+    @pet = Pet.new(user_id: params[:current_user.id])
   end
 
   def create
