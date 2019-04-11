@@ -6,12 +6,12 @@ class PetsController < ApplicationController
       @pets = User.find(params[:user_id]).pets
     else
       flash[:notice] = 'You Currently Do Not Have Any Pets'
-      redirect_to new_pet_path
+      redirect_to new_user_pet_path
     end
   end
 
   def new
-    @pet = Pet.new
+    @pet = Pet.new(user_id: params[:user_id])
   end
 
   def create
