@@ -13,7 +13,5 @@ Rails.application.routes.draw do
   end
 
   resources :vet_providers
-  resources :appointments
-  resources :pets
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
