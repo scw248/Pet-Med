@@ -7,7 +7,7 @@
 <% end %>
 
 <% if @user.has_appointments%>
-  <h3><%= link_to "My Appointments", user_appointments_path %></h3>
+  <h3><%= link_to "My Appointments", user_appointments_path(@user) %></h3>
 <% else %>
   <h3><%= link_to "My Appointments", new_user_appointment_path(@user) %></h3>
 <% end %>
