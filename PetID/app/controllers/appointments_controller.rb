@@ -49,6 +49,11 @@ class AppointmentsController < ApplicationController
     redirect_to appointment_path(@appointment)
   end
 
+  def destroy
+    appointment.destroy
+    redirect_to root_path
+  end
+
   private
 
   def appointment_params
