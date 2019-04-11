@@ -1,3 +1,9 @@
+<div class='buttons'>
+<%= link_to 'Edit Pet', edit_user_pet_path(@pet.user_id, @pet)%>
+<%= link_to 'New Pet', new_user_pet_path(@user) %>
+<%= link_to "Remove Pet", @pet, method: :delete, data: { confirm: "Are You Sure?" } %>
+</div>
+
 <div>
   <p><%= @pet.name %></p>
   <p><%= @pet.animal_type %></p>
@@ -7,8 +13,3 @@
   <p><%= @pet.weight %></p>
 </div>
 
-<div class='buttons'>
-<%= link_to 'Edit Pet', edit_user_pet_path(@pet.user_id, @pet)%>
-<%= link_to 'New Pet', new_user_pet_path(@user) %>
-<%= link_to "Delete", @pet, method: :delete, data: { confirm: "Are You Sure?" } %>
-</div>
