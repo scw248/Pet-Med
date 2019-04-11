@@ -41,6 +41,9 @@ body {
 
 /* Style the footer */
 .footer {
-  background-color: rgb(150, 212, 212);
+  background-color: white
   padding: 5px;
+  text-align: center;
+  text-emphasis-color: white;
+  text-decoration: none;
 }
