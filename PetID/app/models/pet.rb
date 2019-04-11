@@ -5,7 +5,7 @@ class Pet < ApplicationRecord
   # validates :animal_type, presence: true
   # validates :animal_type, inclusion: { in: TYPES }
   # validates :breed, presence: true
-  # validates :breed, inclusion: { in: dog_breed, presence: true }, if: :type_dog
+  # validates :breed, inclusion: { in: dog_breed, presence: true }, if: :type_dog included in array:[ "Dog"] 
   # validates :breed, inclusion: { in: cat_breed, presence: true }, if: :type_cat
   # validates :breed, inclusion: { in: bunny_breed, presence: true }, if: :type_bunny
   # validates :gender, presence: true
@@ -19,7 +19,7 @@ class Pet < ApplicationRecord
   # https://stackoverflow.com/questions/13465691/validate-on-inclusion-within-array-of-options-or-be-nil
   TYPES = %w[Dog Cat Bunny].freeze
 
-  def dog_breed
+  def self.allowed_dog_breed
     ['Boston Terrier', 'French Bulldog', 'Golden Retriever', 'Black Lab', 'Poodle', 'German Shepherd', 'Beagle', 'Chihuahua', 'Greyhound', 'English Bulldog', 'Pug', 'Siberian Husky', 'Boxer', 'Pointer', 'Yorkshire Terrier', 'Mutt']
   end
 
@@ -46,4 +46,6 @@ class Pet < ApplicationRecord
   def genders
     %w[Male Female]
   end
+
+  scope :birthdate, -> {where(birthdate: Date.today)}
 end

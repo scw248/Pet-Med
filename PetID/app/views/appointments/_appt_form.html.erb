@@ -1,7 +1,7 @@
-<%= form_for @appointment do |f| %>
+<%= form_for @appointment,url: user_appointments_path(@appointment.user) do |f| %>
 <%= f.hidden_field :user_id %>
 <%= f.label :pet %>
-<%= f.collection_select :pet, Pet.all, :id, :name %>
+<%# <%= f.collection_select :current_user.pets, current_user.pets, :id, :name %> %>
 <br>
 <br>
 <%= f.label :vet_provider %>

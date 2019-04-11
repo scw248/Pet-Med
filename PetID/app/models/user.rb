@@ -22,14 +22,6 @@ class User < ApplicationRecord
     end
   end
 
-  def self.appt_booked
-    where(appt_booked: false)
-  end
-
-  def current_user
-    self
-  end
-
   def has_pets
     !pets.empty?
   end

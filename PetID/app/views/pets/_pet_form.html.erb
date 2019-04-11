@@ -1,19 +1,19 @@
-<%= form_for @pet do |f| %>
+<%= form_for @pet, url: user_pets_path(@pet.user) do |f| %>
 <%= f.hidden_field :user_id %>
 <%= f.label :name%>
 <%= f.text_field :name %>
 <br>
 <br>
 <%= f.label :animal_type%>
-<%= f.collection_select :animal_type, Pet.all, :animal_type, :animal_type %>
+<%= f.collection_select :animal_type, Pet.all, :id, :animal_type %>
 <br>
 <br>
 <%= f.label :breed %>
-<%= f.collection_select :breed, Pet.all, :breed, :breed %>
+<%= f.collection_select :breed, Pet.all, :id, :breed %>
 <br>
 <br>
 <%= f.label :gender %>
-<%= f.collection_select :gender, Pet.all, :gender, :gender %>
+<%= f.collection_select :gender, Pet.all, :user_id, :gender %>
 <br>
 <br>
 <%= f.label :birthdate %>
