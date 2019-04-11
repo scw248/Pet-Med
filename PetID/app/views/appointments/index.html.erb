@@ -1,0 +1,10 @@
+<div>
+<p><%= @appointment.reason_for_visit %></p>
+<br>
+<p><%= @appointment.date_time.strftime('%b %e, %l:%M %p') %></p>
+</div>
+
+<div>
+<%= link_to 'Change Appointment', edit_appointment_path%>
+<%= link_to 'New Appointment', new_appointment_path%>
+</div>
