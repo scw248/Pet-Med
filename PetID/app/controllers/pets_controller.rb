@@ -2,8 +2,9 @@
 
 class PetsController < ApplicationController
   def index
-    if params[:user_id]
-      @pets = User.find(params[:user_id]).pets
+    if current_user.has_pets
+      @pets = current_user.pets
+      @user = current_user
     else
       flash[:notice] = 'You Currently Do Not Have Any Pets'
       redirect_to new_user_pet_path
@@ -11,18 +12,17 @@ class PetsController < ApplicationController
   end
 
   def new
-    @pet = Pet.new(user_id: params[:current_user.id])
+    @pet = Pet.new(user_id: params[:user_id])
   end
 
   def create
     @pet = Pet.create(pet_params)
-    @pet.user_id = current_user.id
-    # @pet.save
     redirect_to pet_path(@pet)
   end
 
   def show
     @pet = pet
+    @user = current_user
   end
 
   def edit

@@ -1,7 +1,7 @@
 <h2>Welcome <%= @user.email %>!</h2>
 
 <% if @user.has_pets%>
-  <h3><%= link_to "My Pets", user_pets_path %></h3>
+  <h3><%= link_to "My Pets", user_pets_path(@user) %></h3>
 <% else %>
   <h3><%= link_to "My Pets", new_user_pet_path(@user) %></h3>
 <% end %>
