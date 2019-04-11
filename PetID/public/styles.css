@@ -34,7 +34,7 @@ body {
 .content {
   display: block;
   text-align: center;
-  font-size: 48px;
+  font-size: 36px;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-weight: bold;
   color: white;
@@ -55,5 +55,5 @@ body {
 .buttons {
   float: right;
   text-decoration: none;
-  
+
 }
