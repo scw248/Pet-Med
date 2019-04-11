@@ -1,28 +1,28 @@
 # frozen_string_literal: true
 
 class AppointmentsController < ApplicationController
+  def new
+    @appointment = Appointment.new(user_id: params[:user_id])
+  end
+
+  def create
+    @appointment = Appointment.create(appointment_params)
+    redirect_to appointment_path(@appointment)
+  end
+
   def index
-    if params[:user_id]
-      @appointments = User.find(params[:user_id]).appointments
+    if current_user.has_appointments
+      @appointments = current_user.appointments
+      @user = current_user
     else
       flash[:notice] = 'You Currently Do Not Have Any Appointments'
       redirect_to new_appointment_path
     end
   end
 
-  def new
-    @appointment = Appointment.new
-  end
-
-  def create
-    @appointment = Appointment.create(appointment_params)
-    @appointment.user_id = current_user.id
-    # @appointment.save
-    redirect_to appointment_path(@appointment)
-  end
-
   def show
     @appointment = appointment
+    @user = current_user
   end
 
   def edit

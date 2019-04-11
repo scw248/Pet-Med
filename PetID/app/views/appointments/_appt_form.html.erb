@@ -1,4 +1,5 @@
 <%= form_for @appointment do |f| %>
+<%= f.hidden_field :user_id %>
 <%= f.label :vet_provider %>
 <%# <%= f.collection_select :vet_provider, VetProvider.all, :vet_provider, :vet_provider%> %>
 <br>

@@ -3,9 +3,7 @@
 class UsersController < ApplicationController
   before_action :user
 
-  def show
-
-  end
+  def show; end
 
   private
 
