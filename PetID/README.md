@@ -1,27 +1,24 @@
-# README
+# PetMed
+This application brings modern healthcare to your pet!  A user can sign up with their email and password, add their pets to the database with details, and book veterinary appointsments from a list of 
+veterinary providers.  
 
-# Pet-ID
-For the veterinary care of your pet!
+# Getting Started
+Feel free to fork and clone this application at https://github.com/scw248/Pet-ID
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Prerequisites
+Make sure to install ruby '2.3.3' and 'rails', '~> 5.2.3' or above
 
-Things you may want to cover:
+# Built With
+Ruby on Rails
 
-* Ruby version
+# Contributing
+Bug reports and pull requests are welcome on GitHub at https://github.com/scw248/Pet-ID. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* System dependencies
+# Authors
+Steve Wright - https://github.com/scw248
 
-* Configuration
+# License
+This project is licensed under the MIT License - see the LICENSE file for details
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Acknowledgments
+Thank you to Morgan VanYperen for helping me with all of my bugs
