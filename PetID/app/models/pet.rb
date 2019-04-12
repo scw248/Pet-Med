@@ -1,18 +1,16 @@
 # frozen_string_literal: true
 
 class Pet < ApplicationRecord
-  # validates :name, presence: true
-  # validates :animal_type, presence: true
-  # validates :animal_type, inclusion: { in: TYPES }
-  # validates :breed, presence: true
-  # validates :breed, inclusion: { in: dog_breed, presence: true }, if: :type_dog 
-  # validates :breed, inclusion: { in: cat_breed, presence: true }, if: :type_cat
-  # validates :breed, inclusion: { in: bunny_breed, presence: true }, if: :type_bunny
-  # validates :gender, presence: true
-  # validates :gender, inclusion: { in: genders, presence: true }
-  # validates :birthdate, presence: true # will probably have to add validation to this field after building form
-  # validates :weight, presence: true
-  # validates :weight, numericality: { greater_than_or_equal_to: 0 }
+  validates :name, presence: true
+  validates :animal_type, presence: true
+  # validates :animal_type, inclusion: { in: self.allowed_types, presence: true }
+  validates :breed, presence: true
+  # validates :breed, inclusion: { in: self.allowed_breeds, presence: true }, 
+  validates :gender, presence: true
+  # validates :gender, inclusion: { in: self.allowed_genders, presence: true }
+  validates :birthdate, presence: true # will probably have to add validation to this field after building form
+  validates :weight, presence: true
+  validates :weight, numericality: { greater_than_or_equal_to: 0 }
   belongs_to :user
   has_many :appointments, through: :user
 
