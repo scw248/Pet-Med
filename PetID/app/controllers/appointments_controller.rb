@@ -45,13 +45,19 @@ class AppointmentsController < ApplicationController
       end
     else
       @appointment = appointment
+      @user = current_user
     end
   end
 
   def update
     @appointment = appointment
     @appointment.update(appointment_params)
-    redirect_to appointment_path(@appointment)
+    if !@appointment.errors.any?
+      @user = current_user
+      redirect_to user_appointment_path(@user, @appointment)
+    else
+      render :new
+    end
   end
 
   def destroy

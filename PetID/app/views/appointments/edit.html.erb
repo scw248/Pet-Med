@@ -1,2 +1,27 @@
 <h1>Change Appointment</h1>
-<%= render partial: 'appt_form' %> 
+<%= render partial: 'errors_form' %> 
+
+<%= form_for @appointment, url: user_appointment_path(@appointment.user_id, @appointment) do |f| %>
+<%= f.hidden_field :user_id %>
+<%= f.label :pet %>
+<%# <%= f.collection_select :user_id.pets, Pet.all, :id, :name %> %>
+<br>
+<br>
+<%= f.label :vet_provider %>
+<%= f.collection_select :vet_provider_id, VetProvider.all, :id, :name %>
+<br>
+<br>
+<%= f.label :reason_for_visit%>
+<%# <%= f.collection_select :reason_for_visit, Appointment.all, :reason_for_visit, :reason_for_visit %> %>
+<%= f.text_field :reason_for_visit%>
+<br>
+<br>
+<%= f.label :date_time %>
+<%= f.datetime_select :date_time %>
+<br>
+<br>
+<%= f.submit %>
+<br>
+<br>
+<br>
+<% end %>
