@@ -31,7 +31,7 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = appointment
-    @user = current_user # added this because user_id wasn't working in show view
+    @user = current_user 
   end
 
   def edit
