@@ -1,20 +1,5 @@
 <h1>Edit Pet</h1>
-<%# <%= render partial: 'pet_form' %>  %>
-
-<% if @pet.errors.any? %>
-  <div class="error_explanation">
-    <h2>
-      <%= pluralize(@pet.errors.count, "error") %>
-      prohibited this post from being saved:
-    </h2>
- 
-    <ul>
-    <% @pet.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial: 'errors_form' %> 
 
 <%= form_for @pet, url: user_pet_path(@pet.user_id, @pet) do |f| %>
 <%= f.hidden_field :user_id %>

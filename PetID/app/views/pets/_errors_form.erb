@@ -1,0 +1,14 @@
+<% if @pet.errors.any? %>
+  <div class="error_explanation">
+    <h2>
+      <%= pluralize(@pet.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+ 
+    <ul>
+    <% @pet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
