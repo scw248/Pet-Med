@@ -4,7 +4,10 @@
 <%= form_for @appointment,url: user_appointments_path(@appointment.user) do |f| %>
 <%= f.hidden_field :user_id %>
 <%= f.label :pet %>
-<%# <%= f.collection_select :user_id.pets, Pet.all, :id, :name %> %>
+<%= f.collection_select :user_id, User.all, :id, :email %>
+<%# <% f.fields_for :user_id do |r| %>
+  <%# <%= r.collection_select(:pet_id, Pet.all(:order => 'name'), :id, :name, { :prompt => 'Select Pet' } ) %> 
+<%# <% end %> 
 <br>
 <br>
 <%= f.label :vet_provider %>

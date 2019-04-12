@@ -8,7 +8,7 @@ class Pet < ApplicationRecord
   # validates :breed, inclusion: { in: self.allowed_breeds, presence: true }, 
   validates :gender, presence: true
   # validates :gender, inclusion: { in: self.allowed_genders, presence: true }
-  validates :birthdate, presence: true # will probably have to add validation to this field after building form
+  validate :validate_age
   validates :weight, presence: true
   validates :weight, numericality: { greater_than_or_equal_to: 0 }
   # validates :image, presence: true
@@ -33,4 +33,12 @@ class Pet < ApplicationRecord
   end
 
   scope :birthdate, -> {where(birthdate: Date.today)}
+
+  private
+
+  def validate_age
+      if birthdate.present? && birthdate > 1.day.ago
+          errors.add(:birthdate, 'Your Pet Should Be Over 1 Day Old.')
+      end
+  end
 end
