@@ -56,5 +56,9 @@ body {
   float: right;
   display: block
   text-decoration: none;
-
 }
+.error_explanation {
+  color: red;
+  list-style-type: none;
+}
+

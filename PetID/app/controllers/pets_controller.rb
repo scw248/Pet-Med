@@ -13,15 +13,20 @@ class PetsController < ApplicationController
 
   def new
     if params[:user_id] && !User.exists?(params[:user_id])
-      redirect_to new_user_registration_path alert: 'User not found.'
+      redirect_to new_user_registration_path flash[:notice] = 'User not found.'
     else
       @pet = Pet.new(user_id: params[:user_id])
     end
   end
 
   def create
-    @pet = Pet.create(pet_params)
-    redirect_to pet_path(@pet)
+    @pet = Pet.new(pet_params)
+    if @pet.save 
+      redirect_to user_pet_path(@pet)
+    else
+      # redirect_to new_user_pet_path
+      render :new
+    end
   end
 
   def show

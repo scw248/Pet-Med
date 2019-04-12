@@ -1,3 +1,18 @@
+<% if @pet.errors.any? %>
+  <div class="error_explanation">
+    <h2>
+      <%= pluralize(@pet.errors.count, "error") %>
+      prohibited this post from being saved:
+    </h2>
+ 
+    <ul>
+    <% @pet.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @pet, url: user_pets_path(@pet.user) do |f| %>
 <%= f.hidden_field :user_id %>
 <%= f.label :name%>
@@ -28,6 +43,7 @@
 <br>
 <br>
 <%= f.submit %>
+<%# <%= f.object.errors.full_messages.join(", ") if f.object.errors.any? %> %>
 <br>
 <br>
 <br>
