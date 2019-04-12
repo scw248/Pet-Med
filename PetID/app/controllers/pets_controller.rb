@@ -45,13 +45,19 @@ class PetsController < ApplicationController
       end
     else
       @pet = pet
+      @user = current_user
     end
   end
 
   def update
     @pet = pet
     @pet.update(pet_params)
-    redirect_to pet_path(@pet)
+    if !@pet.errors.any?
+      @user = current_user
+      redirect_to user_pet_path(@user, @pet)
+    else
+      render :new
+    end
   end
 
   def destroy

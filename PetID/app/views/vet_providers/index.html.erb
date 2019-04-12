@@ -1,7 +1,9 @@
 <h2>Your Available Vets!</h2>
+<br>
 <div>
 <% @vet_providers.each do |vet|%>
-  <p><%= vet.name %></p>
+  <b><p><%= vet.name %></p></b>
   <p><%= vet.location %></p>
+  <br>
   <% end %>
 </div>
