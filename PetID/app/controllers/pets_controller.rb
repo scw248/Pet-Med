@@ -25,7 +25,6 @@ class PetsController < ApplicationController
       @user = current_user
       redirect_to user_pet_path(@user, @pet)
     else
-      # redirect_to new_user_pet_path
       render :new
     end
   end

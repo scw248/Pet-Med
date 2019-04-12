@@ -20,8 +20,13 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.create(appointment_params)
-    redirect_to appointment_path(@appointment)
+    @appointment = Appointment.new(appointment_params)
+    if @appointment.save 
+       @user = current_user
+       redirect_to user_appointment_path(@user, @appointment)
+    else
+      render :new
+    end
   end
 
   def show
