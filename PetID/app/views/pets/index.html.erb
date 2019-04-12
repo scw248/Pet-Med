@@ -5,6 +5,7 @@
 <br>
 <div>
 <% @pets.each do |pet|%>
+  <p><%= @pet.image %></p>
   <p><%= link_to pet.name, user_pet_path(@user, pet) %></p>
   <p><%= pet.animal_type %></p>
   <p><%= pet.breed %></p>
