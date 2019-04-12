@@ -22,7 +22,8 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     if @pet.save 
-      redirect_to user_pet_path(@pet)
+      @user = current_user
+      redirect_to user_pet_path(@user, @pet)
     else
       # redirect_to new_user_pet_path
       render :new
@@ -31,7 +32,7 @@ class PetsController < ApplicationController
 
   def show
     @pet = pet
-    @user = current_user # added this because user_id wasn't working in show view
+    @user = current_user 
   end
 
   def edit
