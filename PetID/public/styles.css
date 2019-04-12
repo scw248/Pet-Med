@@ -108,10 +108,24 @@ body {
 }
 
 .buttons {
-  float: right;
-  display: block
-  text-decoration: none;
+  border-radius: 100px;
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 6px 20px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+  display: inline-block;
+  background-color: #fff;
+  margin-right: 20px;
+  border: 1px solid rgb(150, 212, 212);
+  color: #1da1f2;
+  float: right!important;
 }
+
 .error_explanation {
   color: red;
   list-style-type: none;
