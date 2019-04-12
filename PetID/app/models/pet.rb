@@ -5,7 +5,7 @@ class Pet < ApplicationRecord
   # validates :animal_type, presence: true
   # validates :animal_type, inclusion: { in: TYPES }
   # validates :breed, presence: true
-  # validates :breed, inclusion: { in: dog_breed, presence: true }, if: :type_dog included in array:[ "Dog"] 
+  # validates :breed, inclusion: { in: dog_breed, presence: true }, if: :type_dog 
   # validates :breed, inclusion: { in: cat_breed, presence: true }, if: :type_cat
   # validates :breed, inclusion: { in: bunny_breed, presence: true }, if: :type_bunny
   # validates :gender, presence: true
@@ -17,33 +17,19 @@ class Pet < ApplicationRecord
   has_many :appointments, through: :user
 
   # https://stackoverflow.com/questions/13465691/validate-on-inclusion-within-array-of-options-or-be-nil
-  TYPES = %w[Dog Cat Bunny].freeze
-
-  def self.allowed_dog_breed
-    ['Boston Terrier', 'French Bulldog', 'Golden Retriever', 'Black Lab', 'Poodle', 'German Shepherd', 'Beagle', 'Chihuahua', 'Greyhound', 'English Bulldog', 'Pug', 'Siberian Husky', 'Boxer', 'Pointer', 'Yorkshire Terrier', 'Mutt']
+  def self.allowed_types
+    %w[Dog Cat Bunny]
   end
 
-  def type_dog
-    self.breed = 'Dog'
+  def self.allowed_breeds
+    ['Boston Terrier', 'French Bulldog', 'Golden Retriever', 'Black Lab', 'Poodle', 'German Shepherd', 'Beagle', '
+    Chihuahua', 'Greyhound', 'English Bulldog', 'Pug', 'Siberian Husky', 'Boxer', 'Pointer', 'Yorkshire Terrier', 
+    'Mutt', 'Russian Blue', 'Persian', 'British Shorthair', 'Scottish Fold', 'Siamese', 'Ragdoll', 'Maine Coon', 
+    'Munchkin', 'Sphynx', 'Abyssinian', 'Holland Lop', 'Rex Rabbit', 'Netherland Dwarf Rabbit', 
+    'Flemish Giant Rabbit', 'Mini Lop']
   end
 
-  def cat_breed
-    ['Russian Blue', 'Persian', 'British Shorthair', 'Scottish Fold', 'Siamese', 'Ragdoll', 'Maine Coon', 'Munchkin', 'Sphynx', 'Abyssinian']
-  end
-
-  def type_cat
-    self.breed = 'Cat'
-  end
-
-  def bunny_breed
-    ['Holland Lop', 'Rex Rabbit', 'Netherland Dwarf Rabbit', 'Flemish Giant Rabbit', 'Mini Lop']
-  end
-
-  def type_bunny
-    self.breed = 'Bunny'
-  end
-
-  def genders
+  def self.allowed_genders
     %w[Male Female]
   end
 

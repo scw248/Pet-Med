@@ -4,16 +4,16 @@
 <%= f.text_field :name %>
 <br>
 <br>
-<%= f.label :animal_type%>
-<%= f.collection_select :animal_type, Pet.all, :id, :animal_type %>
+<%= f.label :animal_type %>
+<%= f.collection_select :animal_type, Pet.allowed_types, :id, :animal_type %>
 <br>
 <br>
 <%= f.label :breed %>
-<%= f.collection_select :breed, Pet.all, :id, :breed %>
+<%= f.collection_select :breed, Pet.allowed_breeds, :id, :breed %>
 <br>
 <br>
 <%= f.label :gender %>
-<%= f.collection_select :gender, Pet.all, :user_id, :gender %>
+<%= f.collection_select :gender, Pet.allowed_genders, :user_id, :gender %>
 <br>
 <br>
 <%= f.label :birthdate %>
