@@ -9,8 +9,8 @@ class Appointment < ApplicationRecord
   belongs_to :vet_provider
   has_many :pets, through: :user
 
-  def visit_reasons
-    ['Dental', 'Medical Exam', 'Medication Refill', 'Net Patient Visit', 'Surgery', 'Wellness Exam', 'Vaccinations']
+  def self.visit_reasons
+    [ 'Dental', 'Medical Exam', 'Medication Refill', 'Net Patient Visit', 'Surgery', 'Wellness Exam', 'Vaccinations']
   end
 
   private
