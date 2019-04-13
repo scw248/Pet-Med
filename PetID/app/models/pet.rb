@@ -11,11 +11,10 @@ class Pet < ApplicationRecord
   validate :validate_age
   validates :weight, presence: true
   validates :weight, numericality: { greater_than_or_equal_to: 0 }
-  # validates :image, presence: true
+  validates :image, presence: true
   belongs_to :user
   has_many :appointments, through: :user
 
-  # https://stackoverflow.com/questions/13465691/validate-on-inclusion-within-array-of-options-or-be-nil
   def self.allowed_types
     %w[Dog Cat Bunny]
   end

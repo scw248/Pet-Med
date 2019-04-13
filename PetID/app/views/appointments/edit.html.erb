@@ -4,7 +4,7 @@
 <%= form_for @appointment, url: user_appointment_path(@appointment.user_id, @appointment) do |f| %>
 <%= f.hidden_field :user_id %>
 <%= f.label :pet %>
-<%# <%= f.collection_select :user_id.pets, Pet.all, :id, :name %> %>
+<%= f.collection_select :user_id, current_user.pets, :id, :name %>
 <br>
 <br>
 <%= f.label :vet_provider %>
@@ -12,7 +12,7 @@
 <br>
 <br>
 <%= f.label :reason_for_visit%>
-<%# <%= f.collection_select :reason_for_visit, Appointment.all, :reason_for_visit, :reason_for_visit %> %>
+<%# <%= f.collection_select :reason_for_visit, Appointment.all, :id, :reason_for_visit %> %>
 <%= f.text_field :reason_for_visit%>
 <br>
 <br>
