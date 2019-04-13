@@ -64,13 +64,13 @@ body {
 .card .card_image {
   width: inherit;
   height: inherit;
-  border-radius: 20px;
+  border-radius: 30px;
 }
 
 .card .card_image img {
   width: inherit;
   height: inherit;
-  border-radius: 20px;
+  border-radius: 50px;
   object-fit: cover;
 }
 
