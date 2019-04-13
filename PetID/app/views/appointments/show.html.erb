@@ -9,7 +9,7 @@
 </div>
 <br>
 <div>
-<%# <p>Appt for: <%= @appointment.user.pet.name %></p> %>
+<p><b>Appt for:</b> <%= @appointment.pet.name %></p>
 <p><b>Vet:</b> <%= @appointment.vet_provider.name %></p>
 <p><b>Reason for Visit:</b> <%= @appointment.reason_for_visit %></p>
 <p><b>Date/Time:</b> <%= @appointment.date_time.strftime('%b %e, %l:%M %p') %></p>

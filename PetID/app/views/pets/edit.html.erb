@@ -8,18 +8,14 @@
 <br>
 <br>
 <%= f.label :animal_type %>
-<%= f.text_field :animal_type %>
-<%# <%= f.collection_select :animal_type, Pet.allowed_types, :id, :animal_type %> %>
-<br>
+<%= f.select :animal_type, Pet.allowed_types %> <br>
 <br>
 <%= f.label :breed %>
-<%= f.text_field :breed %>
-<%# <%= f.collection_select :breed, Pet.allowed_breeds, :id, :breed %> %>
+<%= f.select :breed, Pet.allowed_breeds %>
 <br>
 <br>
 <%= f.label :gender %>
-<%= f.text_field :gender %>
-<%# <%= f.collection_select :gender, Pet.allowed_genders, :user_id, :gender %> %>
+<%= f.select :gender, Pet.allowed_genders %>
 <br>
 <br>
 <%= f.label :birthdate %>

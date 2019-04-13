@@ -56,7 +56,7 @@ class AppointmentsController < ApplicationController
       @user = current_user
       redirect_to user_appointment_path(@user, @appointment)
     else
-      render :new
+      render :edit
     end
   end
 
@@ -68,7 +68,7 @@ class AppointmentsController < ApplicationController
   private
 
   def appointment_params
-    params.require(:appointment).permit(:reason_for_visit, :date_time, :user_id, :pet, :vet_provider_id)
+    params.require(:appointment).permit(:reason_for_visit, :date_time, :user_id, :pet_id, :vet_provider_id)
   end
 
   def appointment

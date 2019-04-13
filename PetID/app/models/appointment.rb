@@ -7,10 +7,10 @@ class Appointment < ApplicationRecord
   validates :vet_provider, presence: true
   belongs_to :user
   belongs_to :vet_provider
-  has_many :pets, through: :user
+  belongs_to :pet
 
   def self.visit_reasons
-    [ 'Dental', 'Medical Exam', 'Medication Refill', 'Net Patient Visit', 'Surgery', 'Wellness Exam', 'Vaccinations']
+    ['Dental', 'Medical Exam', 'Medication Refill', 'New Patient Visit', 'Surgery', 'Wellness Exam', 'Vaccinations']
   end
 
   private

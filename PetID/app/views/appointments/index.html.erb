@@ -7,9 +7,9 @@
 <% @appointments.each do |appointment|%>
 <p>Reason for Visit: <%= link_to appointment.reason_for_visit, user_appointment_path(@user, appointment) %></p>
 <br>
-<%# <p>Appt for: <%= @appointment.user.pet.name %></p> %>
+<p><b>Appt for:</b> <%= appointment.pet.name %></p><br>
 <br>
-<p>Vet: <%= @appointment.vet_provider.name %></p>
+<p>Vet: <%= appointment.vet_provider.name %></p>
 <br>
 <p>Date/Time: <%= appointment.date_time.strftime('%b %e, %l:%M %p') %></p>
 <% end %>
