@@ -9,15 +9,17 @@
 </div>
 
 <br>
-<div class="cards-list card">
-  <div class="card_title title-black">
-  <p><%= @pet.name %></p>
-  <div class="card_image"> <img src="<%= @pet.image %>" /> </div>
+<ul class="image-list-small">
+  <li>
+  <a style="background-image: url('<%= @pet.image %>');"></a>
+  <div class="details">
+    <h3><%= @pet.name %></h3>
+    <div class="image-details">
+      <p>Gender: <%= @pet.gender %> </p>  
+      <p><%= @pet.animal_type %> - <%= @pet.breed%></p>
+      <p>Weight: <%= @pet.weight %> lbs</p>
+      <p>Birth Date: <%= @pet.birthdate.strftime('%b %d, %Y') %></p>
+    </div>
   </div>
-</div>
-
-  <p>Gender: <%= @pet.gender %> </p>  
-  <p><%= @pet.animal_type %> - <%= @pet.breed%></p>
-  <p>Weight: <%= @pet.weight %> lbs</p>
-  <p>Birth Date: <%= @pet.birthdate.strftime('%b %d, %Y') %></p>
-
+  </li>
+</ul>  

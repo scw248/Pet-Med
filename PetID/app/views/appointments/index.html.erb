@@ -5,13 +5,11 @@
 <h2>Your Upcoming Appointments</h2>
 <div>
 <% @appointments.each do |appointment|%>
-<p>Reason for Visit: <%= link_to appointment.reason_for_visit, user_appointment_path(@user, appointment) %></p>
+<p><b>Appt for:</b> <%= appointment.pet.name %></p>
+<p><b>Reason for Visit: </b><%= link_to appointment.reason_for_visit, user_appointment_path(@user, appointment) %></p>
+<p><b>Vet:</b> <%= appointment.vet_provider.name %></p>
+<p><b>Date/Time:</b> <%= appointment.date_time.strftime('%b %e, %l:%M %p') %></p>
 <br>
-<p><b>Appt for:</b> <%= appointment.pet.name %></p><br>
-<br>
-<p>Vet: <%= appointment.vet_provider.name %></p>
-<br>
-<p>Date/Time: <%= appointment.date_time.strftime('%b %e, %l:%M %p') %></p>
 <% end %>
 </div>
 
