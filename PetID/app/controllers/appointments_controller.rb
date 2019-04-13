@@ -6,14 +6,13 @@ class AppointmentsController < ApplicationController
       @appointments = User.find(params[:user_id]).appointments
       @user = User.find(params[:user_id])
     else
-      flash[:notice] = 'You Currently Do Not Have Any Appointments'
-      redirect_to new_user_appointment_path
+      redirect_to new_user_appointment_path flash[:notice] = 'You Currently Do Not Have Any Appointments'
     end
   end
 
   def new
     if params[:user_id] && !User.exists?(params[:user_id])
-      redirect_to new_user_registration_path alert: 'User not found.'
+      redirect_to new_user_registration_path flash[:notice] = 'User not found.'
     else
       @appointment = Appointment.new(user_id: params[:user_id])
     end
@@ -29,6 +28,7 @@ class AppointmentsController < ApplicationController
     end
   end
 
+
   def show
     @appointment = appointment
     @user = current_user 
@@ -38,10 +38,10 @@ class AppointmentsController < ApplicationController
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
       if user.nil?
-        redirect_to new_user_registration_path, alert: 'User not found.'
+        redirect_to new_user_registration_path, flash[:notice] = 'User not found.'
       else
         @appointment = user.appointments.find_by(id: params[:id])
-        redirect_to user_appointments_path(user), alert: 'Appointment not found.' if @appointment.nil?
+        redirect_to user_appointments_path(user), flash[:notice] = 'Appointment not found.' if @appointment.nil?
       end
     else
       @appointment = appointment
