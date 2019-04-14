@@ -2,31 +2,17 @@
 <div class="cards-list">
 
 <div class="card">
-<% if @user.has_pets%>
 <div class="card_image"> <img src="http://media.petsathome.com/content/files/pp-pah-insurance/multi-pet-image.jpg" /> </div>
 <div class="card_title title-white">
   <h3><%= link_to "My Pets", user_pets_path(@user) %></h3>
 </div>
-<% else %>
-<div class="card_image"> <img src="http://media.petsathome.com/content/files/pp-pah-insurance/multi-pet-image.jpg" /> </div>
-<div class="card_title title-white">
-  <h3><%= link_to "My Pets", new_user_pet_path(@user) %></h3>
-</div>
-<% end %>
 </div>
 
 <div class="card">
-<% if @user.has_appointments%>
 <div class="card_image"> <img src="http://www.ecmacomb.org/images/appointment.jpg" /> </div>
 <div class="card_title title-white">
   <h3><%= link_to "My Appointments", user_appointments_path(@user) %></h3>
 </div>
-<% else %>
-<div class="card_image"> <img src="http://www.ecmacomb.org/images/appointment.jpg" /> </div>
-<div class="card_title title-white">
-  <h3><%= link_to "My Appointments", new_user_appointment_path(@user) %></h3>
-</div>
-<% end %>
 </div>
 
 <div class="card">
