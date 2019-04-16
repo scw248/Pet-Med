@@ -6,15 +6,14 @@ class PetsController < ApplicationController
       @pets = User.find(params[:user_id]).pets
       @user = User.find(params[:user_id])
     else
-      flash[:notice] = 'You Currently Do Not Have Any Pets'
-      redirect_to new_user_pet_path
+      redirect_to user_pets_path
     end
   end
 
   def new
     if params[:user_id] && !User.exists?(params[:user_id])
       flash[:notice] = 'User not found.'
-      redirect_to new_user_registration_path 
+      redirect_to new_user_registration_path
     else
       @pet = Pet.new(user_id: params[:user_id])
     end
@@ -22,7 +21,7 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
-    if @pet.save 
+    if @pet.save
       @user = current_user
       redirect_to user_pet_path(@user, @pet)
     else
@@ -32,14 +31,15 @@ class PetsController < ApplicationController
 
   def show
     @pet = pet
-    @user = current_user 
+    @user = current_user
   end
 
   def edit
     if params[:user_id]
       user = User.find_by(id: params[:user_id])
       if user.nil?
-        redirect_to new_user_registration_path, flash[:notice] = 'User not found.'
+        flash[:notice] = 'User not found.'
+        redirect_to new_user_registration_path
       else
         @pet = user.pets.find_by(id: params[:id])
         redirect_to user_pets_path(user), flash[:notice] = 'Pet not found.' if @pet.nil?
@@ -53,7 +53,7 @@ class PetsController < ApplicationController
   def update
     @pet = pet
     @pet.update(pet_params)
-    if !@pet.errors.any?
+    if @pet.errors.none?
       @user = current_user
       redirect_to user_pet_path(@user, @pet)
     else

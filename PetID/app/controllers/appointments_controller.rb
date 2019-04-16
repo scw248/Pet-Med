@@ -6,13 +6,14 @@ class AppointmentsController < ApplicationController
       @appointments = User.find(params[:user_id]).appointments
       @user = User.find(params[:user_id])
     else
-      redirect_to new_user_appointment_path flash[:notice] = 'You Currently Do Not Have Any Appointments'
+      redirect_to user_appointments_path
     end
   end
 
   def new
     if params[:user_id] && !User.exists?(params[:user_id])
-      redirect_to new_user_registration_path flash[:notice] = 'User not found.'
+      flash[:notice] = 'User not found.'
+      redirect_to new_user_registration_path
     else
       @appointment = Appointment.new(user_id: params[:user_id])
     end
@@ -20,18 +21,17 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
-    if @appointment.save 
-       @user = current_user
-       redirect_to user_appointment_path(@user, @appointment)
+    if @appointment.save
+      @user = current_user
+      redirect_to user_appointment_path(@user, @appointment)
     else
       render :new
     end
   end
 
-
   def show
     @appointment = appointment
-    @user = current_user 
+    @user = current_user
   end
 
   def edit
@@ -52,7 +52,7 @@ class AppointmentsController < ApplicationController
   def update
     @appointment = appointment
     @appointment.update(appointment_params)
-    if !@appointment.errors.any?
+    if @appointment.errors.none?
       @user = current_user
       redirect_to user_appointment_path(@user, @appointment)
     else
