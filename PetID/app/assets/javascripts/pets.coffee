@@ -27,6 +27,17 @@ class Pet {
     <button class="delete" data-id="${this.id}">Delete</button>`
   }
 
+   deletePet(e) {
+    const id = e.target.dataset.id
+    fetch(`http://localhost:3000/users/${id}/pets/${id}`, {
+      method: 'DELETE'
+    })
+      .then(() => {
+        document.getElementById('pet-container')
+          .removeChild(document.getElementById(id))
+      })
+  }
+
   render() {
     const petContainer = document.getElementById('pet-container')
     const petCard = document.createElement('div')
