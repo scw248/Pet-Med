@@ -1,3 +1,3 @@
 class VetProviderSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :name, :location
 end
