@@ -18,14 +18,40 @@ class Pet {
 
   petHTML() {
     return `
-    <img src='${this.image}' />
-    <h3>${this.name}</h3>
-    <p>Gender: ${this.gender}</p>
-    <p>${this.animal_type} - ${this.breed}</p>
-    <p>Weight: ${this.weight}</p>
-    <p>Birthday: ${this.birthdate.strftime('%b %d, %Y')}</p>
-    <button class="delete" data-id="${this.id}">Delete</button>`
+  <div>
+    <ul class="image-list-small">
+      <a style="background-image: url('${pet.image}');"></a>
+      <div class="details">
+      <h3>${this.name}</h3>
+        <div class="image-details">
+          <p>Gender: ${this.gender}</p>
+          <p>${this.animal_type} - ${this.breed}</p>
+          <p>Weight: ${this.weight}</p>
+          <p>Birthday: ${this.birthdate.strftime('%b %d, %Y')}</p>
+          <button class="delete" data-id="${this.id}">Delete</button>`
+        </div>
+      </div>
+    </ul>
+  </div>
   }
+
+  <div>
+  <ul class="image-list-small">
+    <% @pets.each do |pet|%>
+    <li>
+      <a style="background-image: url('<%= pet.image %>');"></a>
+      <div class="details">
+      <h3><%= link_to pet.name, user_pet_path(@user, pet) %></h3>
+        <div class="image-details">
+          <p>Gender: <%= pet.gender %></p>
+          <p><%= pet.animal_type %> - <%= pet.breed %></p>
+          <p>Weight: <%= pet.weight %></p>
+          <p>Birth Date: <%= pet.birthdate.strftime('%b %d, %Y') %></p>
+        <% end %>
+        </div>
+      </div>
+    </ul>
+</div>
 
    deletePet(e) {
     const id = e.target.dataset.id
@@ -45,8 +71,8 @@ class Pet {
     petCard.id = this.id
     petCard.innerHTML += this.hogHTML()
     petContainer.appendChild(petCard)
-    # petCard.addEventListener('click', e => {
-    #   if (e.target.className.includes('delete')) this.deletePet(e)
+    petCard.addEventListener('click', e => {
+      if (e.target.className.includes('delete')) this.deletePet(e)
     })
   }
 }
