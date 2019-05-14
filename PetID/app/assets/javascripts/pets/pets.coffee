@@ -49,6 +49,7 @@ class Pet {
   render() {
     const petContainer = document.getElementById('pet-container')
     const petCard = document.createElement('div')
+    
     petCard.classList.add('pet-card')
     petCard.id = this.id
     petCard.innerHTML += this.petHTML()
