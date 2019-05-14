@@ -35,24 +35,6 @@ class Pet {
   </div>
   }
 
-  <div>
-  <ul class="image-list-small">
-    <% @pets.each do |pet|%>
-    <li>
-      <a style="background-image: url('<%= pet.image %>');"></a>
-      <div class="details">
-      <h3><%= link_to pet.name, user_pet_path(@user, pet) %></h3>
-        <div class="image-details">
-          <p>Gender: <%= pet.gender %></p>
-          <p><%= pet.animal_type %> - <%= pet.breed %></p>
-          <p>Weight: <%= pet.weight %></p>
-          <p>Birth Date: <%= pet.birthdate.strftime('%b %d, %Y') %></p>
-        <% end %>
-        </div>
-      </div>
-    </ul>
-</div>
-
    deletePet(e) {
     const id = e.target.dataset.id
     fetch(`http://localhost:3000/users/${id}/pets/${id}`, {
@@ -69,7 +51,7 @@ class Pet {
     const petCard = document.createElement('div')
     petCard.classList.add('pet-card')
     petCard.id = this.id
-    petCard.innerHTML += this.hogHTML()
+    petCard.innerHTML += this.petHTML()
     petContainer.appendChild(petCard)
     petCard.addEventListener('click', e => {
       if (e.target.className.includes('delete')) this.deletePet(e)

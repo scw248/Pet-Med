@@ -14,21 +14,6 @@
 <%= link_to 'New Pet', new_user_pet_path(@user)%>
 </div>
 <br>
-<div>
-  <ul class="image-list-small">
-    <% @pets.each do |pet|%>
-    <li>
-      <a style="background-image: url('<%= pet.image %>');"></a>
-      <div class="details">
-      <h3><%= link_to pet.name, user_pet_path(@user, pet) %></h3>
-        <div class="image-details">
-          <p>Gender: <%= pet.gender %></p>
-          <p><%= pet.animal_type %> - <%= pet.breed %></p>
-          <p>Weight: <%= pet.weight %></p>
-          <p>Birth Date: <%= pet.birthdate.strftime('%b %d, %Y') %></p>
-        <% end %>
-        </div>
-      </div>
-    </ul>
+<div id='pet-container'>
 </div>
 <% end %>
