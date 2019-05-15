@@ -6,7 +6,7 @@ class PetsController < ApplicationController
       @pets = User.find(params[:user_id]).pets
       @user = User.find(params[:user_id])
       respond_to do |format|
-        format.html { render :index }
+        format.html { render index: @pets}
         format.json { render json: @pets }
       end
     else
