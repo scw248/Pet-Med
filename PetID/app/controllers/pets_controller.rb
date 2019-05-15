@@ -5,6 +5,10 @@ class PetsController < ApplicationController
     if params[:user_id]
       @pets = User.find(params[:user_id]).pets
       @user = User.find(params[:user_id])
+      respond_to do |format|
+        format.html { render :index }
+        format.json { render json: @pets }
+      end
     else
       redirect_to user_pets_path
     end
@@ -32,6 +36,10 @@ class PetsController < ApplicationController
   def show
     @pet = pet
     @user = current_user
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @pet }
+    end
   end
 
   def edit

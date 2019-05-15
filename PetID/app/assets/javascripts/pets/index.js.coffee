@@ -28,11 +28,11 @@ function addPet(e){
     }
   })
     .then(res => res.json())
-  .then(pets => {
-    pets.forEach(pet => {
-      const pet = { id, name, animal_type, breed, gender, birthdate, weight, image }
-      new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
-      document.getElementById('hog-form').reset()
+    .then(pets => {
+      pets.forEach(pet => {
+        const pet = { id, name, animal_type, breed, gender, birthdate, weight, image }
+        new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
+        document.getElementById('?????').reset()
     })
   })
       
