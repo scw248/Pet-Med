@@ -2,17 +2,35 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+function listenForClick() {
+  $('#card').on('click', function (event) {
+    event.preventDefault()
+    getPets()
+  })
+}
+
+function getPets(){
+fetch('http://localhost:3000/users/${id}/pets')
+  .then(res => res.json())
+  .then(pets => {
+    pets.forEach(pet => {
+      const pet = { id, name, animal_type, breed, gender, birthdate, weight, image }
+      new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
+    })
+  })
+}
+
 class Pet {
-  constructor(id, name, animal_type, breed, gender, birthdate, weight, image){
-    this.id = id
-    this.name = name
-    this.animal_type = animal_type
-    this.breed = breed
-    this.gender = gender
-    this.birthdate = birthdate
-    this.weight = weight
+  constructor(obj){
+    this.id = obj.id
+    this.name = obj.name
+    this.animal_type = obj.animal_type
+    this.breed = obj.breed
+    this.gender = obj.gender
+    this.birthdate = obj.birthdate
+    this.weight = obj.weight
     # t.bigint "user_id"
-    this.image = image
+    this.image = obj.image
     this.render()
   }
 
@@ -22,7 +40,7 @@ class Pet {
     <ul class="image-list-small">
       <a style="background-image: url('${pet.image}');"></a>
       <div class="details">
-      <h3>${this.name}</h3>
+      <h3>${link_to this.name, user_pet_path(@user, pet)}</h3>
         <div class="image-details">
           <p>Gender: ${this.gender}</p>
           <p>${this.animal_type} - ${this.breed}</p>
