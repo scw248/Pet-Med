@@ -33,6 +33,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       pets.forEach(pet => {
         const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
         new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
+        debugger;
       })
     })
   console.log('hi')
@@ -63,7 +64,6 @@ class Pet {
           <p>${this.animal_type} - ${this.breed}</p>
           <p>Weight: ${this.weight}</p>
           <p>Birthday: ${this.birthdate}</p>
-          <button class="delete" data-id="${this.id}">Delete</button>
         </div>
       </div>
     </ul>
