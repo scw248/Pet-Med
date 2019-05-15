@@ -33,22 +33,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
       pets.forEach(pet => {
         const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
         new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
-        debugger;
       })
     })
   console.log('hi')
 })
 
 class Pet {
-  constructor(obj) {
-    this.id = obj.id
-    this.name = obj.name
-    this.animal_type = obj.animal_type
-    this.breed = obj.breed
-    this.gender = obj.gender
-    this.birthdate = obj.birthdate
-    this.weight = obj.weight
-    this.image = obj.image
+  constructor(id, name, animal_type, breed, gender, birthdate, weight, image) {
+    this.id = id
+    this.name = name
+    this.animal_type = animal_type
+    this.breed = breed
+    this.gender = gender
+    this.birthdate = birthdate
+    this.weight = weight
+    this.image = image
     this.render()
   }
 
@@ -70,6 +69,16 @@ class Pet {
   </div>`
   }
 
+  render() {
+    const petContainer = document.getElementById('pet-container')
+    const petCard = document.createElement('div')
+
+    petCard.classList.add('pet-card')
+    petCard.id = this.id
+    petCard.innerHTML += this.petHTML()
+    petContainer.appendChild(petCard)
+  }
+
   deletePet(e) {
     const id = e.target.dataset.id
     fetch(`http://localhost:3000/users/${id}/pets/${id}`, {
@@ -80,14 +89,34 @@ class Pet {
           .removeChild(document.getElementById(id))
       })
   }
-
-  render() {
-    const petContainer = document.getElementById('pet-container')
-    const petCard = document.createElement('div')
-
-    petCard.classList.add('pet-card')
-    petCard.id = this.id
-    petCard.innerHTML += this.petHTML()
-    petContainer.appendChild(petCard)
-  }
 }
+
+
+  // document.querySelector('.buttons').addEventListener('click', addPet)
+  // function addPet(e) {
+  //   e.preventDefault()
+  //   let data = {
+  //     'name': e.target.name.value,
+  //     'animal_type': e.target.animal_type.value,
+  //     'breed': e.target.breed.value,
+  //     'gender': e.target.gender.value,
+  //     'birthdate': e.target.birthdate.value,
+  //     'weight': e.target.weight.value,
+  //     'image': e.target.img.value
+  //   }
+  //   fetch('http://localhost:3000/users/${id}/pets', {
+  //     method: 'POST',
+  //     body: JSON.stringify(data),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  //     .then(res => res.json())
+  //     .then(pets => {
+  //       pets.forEach(pet => {
+  //         const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
+  //         new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
+  //         document.getElementById('?????').reset()
+  //       })
+  //     })
+  // }
