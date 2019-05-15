@@ -2,28 +2,6 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
-// # $(function () {
-// #   listenForClick()
-// # })
-
-// # function listenForClick() {
-// #   $('#card').on('click', function (event) {
-// #     event.preventDefault()
-// #     getPets()
-// #   })
-// # }
-
-// # function getPets(){
-// # fetch('http://localhost:3000/users/${id}/pets')
-// #   .then(res => res.json())
-// #   .then(pets => {
-// #     pets.forEach(pet => {
-// #       # const pet = { id, name, animal_type, breed, gender, birthdate, weight, image }
-// #       new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
-// #     })
-// #   })
-// # }
-
 
 window.addEventListener('DOMContentLoaded', (event) => {
   let id = document.querySelector('#pet-container').dataset.id
@@ -35,7 +13,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
       })
     })
-  console.log('hi')
 })
 
 class Pet {
@@ -55,7 +32,7 @@ class Pet {
     return `
   <div>
     <ul class="image-list-small">
-      <a style="background-image: url('${this.image}');"></a>
+    <img src="${this.image}"/>
       <div class="details">
       <h3>${this.name}</h3>
         <div class="image-details">
@@ -66,7 +43,8 @@ class Pet {
         </div>
       </div>
     </ul>
-  </div>`
+  </div>
+  <br>`
   }
 
   render() {
