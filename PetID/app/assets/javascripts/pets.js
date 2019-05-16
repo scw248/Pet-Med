@@ -57,22 +57,11 @@ class Pet {
     petContainer.appendChild(petCard)
   }
 
-  deletePet(e) {
-    const id = e.target.dataset.id
-    fetch(`http://localhost:3000/users/${id}/pets/${id}`, {
-      method: 'DELETE'
-    })
-      .then(() => {
-        document.getElementById('pet-container')
-          .removeChild(document.getElementById(id))
-      })
-  }
 }
 
+document.querySelector('.buttons').addEventListener('click', Pet.prototype.addPet())
 
-document.querySelector('.buttons').addEventListener('click', addPet)
-
-function addPet(e) {
+Pet.prototype.addPet = function (e) {
   e.preventDefault()
   let data = {
     'name': e.target.name.value,
