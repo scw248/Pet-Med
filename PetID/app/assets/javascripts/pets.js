@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 })
 
 class Pet {
-  constructor(id, name, animal_type, breed, gender, birthdate, weight, user_id, image) {
+  constructor(id, name, animal_type, breed, gender, birthdate, weight, image) {
     this.id = id
     this.name = name
     this.animal_type = animal_type
@@ -81,7 +81,7 @@ function addPet(e) {
     'gender': e.target.gender.value,
     'birthdate': e.target.birthdate.value,
     'weight': e.target.weight.value,
-    'image': e.target.img.value
+    'image': e.target.image.value
   }
   fetch(`http://localhost:3000/users/${id}/pets`, {
     method: 'POST',
