@@ -2,7 +2,7 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 window.addEventListener('DOMContentLoaded', (event) => {
-  let id = document.querySelector('#pet-container').dataset.id
+  let id = document.querySelector('#pets-container').dataset.id
   fetch(`http://localhost:3000/users/${id}/pets.json`)
     .then(res => res.json())
     .then(pets => {
@@ -12,6 +12,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       })
     })
 })
+
 
 class Pet {
   constructor(id, name, animal_type, breed, gender, birthdate, weight, image) {
@@ -46,8 +47,19 @@ class Pet {
   <br>`
   }
 
+  deletePet(e) {
+    const id = e.target.dataset.id
+    fetch(`http://localhost:3000/users/${id}/pets/${id}`, {
+      method: 'DELETE'
+    })
+      .then(() => {
+        document.getElementById('pets-container')
+          .removeChild(document.getElementById(id))
+      })
+  }
+
   render() {
-    const petContainer = document.getElementById('pet-container')
+    const petContainer = document.getElementById('pets-container')
     const petCard = document.createElement('div')
 
     petCard.classList.add('pet-card')
@@ -59,16 +71,7 @@ class Pet {
     })
   }
 
-  deletePet(e) {
-    const id = e.target.dataset.id
-    fetch(`http://localhost:3000/users/${id}/pets/${id}`, {
-      method: 'DELETE'
-    })
-      .then(() => {
-        document.getElementById('pet-container')
-          .removeChild(document.getElementById(id))
-      })
-  }
+
 
   addPet(e) {
     e.preventDefault()
@@ -82,7 +85,7 @@ class Pet {
       'weight': e.target.weight.value,
       'image': e.target.image.value
     }
-    let id = document.querySelector('#pet-container').dataset.id
+    let id = document.querySelector('#pets-container').dataset.id
     fetch(`http://localhost:3000/users/${id}/pets`, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -104,5 +107,15 @@ class Pet {
 document.querySelector('#form').addEventListener('submit', addPet())
 
 
-
+// window.addEventListener('DOMContentLoaded', (event) => {
+//   let id = document.querySelector('#pet-container').dataset.id
+//   fetch(`http://localhost:3000/users/${id}/pets/${pet_id}.json`)
+//     .then(res => res.json())
+//     .then(pets => {
+//       pets.forEach(pet => {
+//         const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
+//         new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
+//       })
+//     })
+// })
 

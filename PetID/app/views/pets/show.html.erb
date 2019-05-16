@@ -9,17 +9,4 @@
 </div>
 
 <br>
-<ul class="image-list-small">
-  <li>
-  <a style="background-image: url('<%= @pet.image %>');"></a>
-  <div class="details">
-    <h3><%= @pet.name %></h3>
-    <div class="image-details">
-      <p>Gender: <%= @pet.gender %> </p>  
-      <p><%= @pet.animal_type %> - <%= @pet.breed%></p>
-      <p>Weight: <%= @pet.weight %> lbs</p>
-      <p>Birth Date: <%= @pet.birthdate.strftime('%b %d, %Y') %></p>
-    </div>
-  </div>
-  </li>
-</ul>  
+<div id='pet-container' data-id="<%= current_user.id %>">
