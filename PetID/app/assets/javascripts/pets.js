@@ -40,10 +40,11 @@ class Pet {
           <p>${this.animal_type} - ${this.breed}</p>
           <p>Weight: ${this.weight}</p>
           <p>Birthday: ${this.birthdate}</p>
-        </div>
-      </div>
-    </ul>
-  </div>
+          <button class="delete" data-id="${this.id}">Delete</button>
+        </div >
+      </div >
+    </ul >
+  </div >
   <br>`
   }
 
@@ -55,36 +56,51 @@ class Pet {
     petCard.id = this.id
     petCard.innerHTML += this.petHTML()
     petContainer.appendChild(petCard)
-  }
-
-}
-
-document.querySelector('.buttons').addEventListener('click', Pet.prototype.addPet())
-
-Pet.prototype.addPet = function (e) {
-  e.preventDefault()
-  let data = {
-    'name': e.target.name.value,
-    'animal_type': e.target.animal_type.value,
-    'breed': e.target.breed.value,
-    'gender': e.target.gender.value,
-    'birthdate': e.target.birthdate.value,
-    'weight': e.target.weight.value,
-    'image': e.target.image.value
-  }
-  fetch(`http://localhost:3000/users/${id}/pets`, {
-    method: 'POST',
-    body: JSON.stringify(data),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(res => res.json())
-    .then(pets => {
-      pets.forEach(pet => {
-        const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
-        new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
-        document.getElementById('new_pet.new_pet').reset()
-      })
+    petCard.addEventListener('click', e => {
+      if (e.target.className.includes('delete')) this.deletePet(e)
     })
+  }
+
+  deletePet(e) {
+    const id = e.target.dataset.id
+    fetch(`http://localhost:3000/users/${id}/pets/${id}`, {
+      method: 'DELETE'
+    })
+      .then(() => {
+        document.getElementById('pet-container')
+          .removeChild(document.getElementById(id))
+      })
+  }
+
+  addPet(e) {
+    e.preventDefault()
+    let data = {
+      'name': e.target.name.value,
+      'animal_type': e.target.animal_type.value,
+      'breed': e.target.breed.value,
+      'gender': e.target.gender.value,
+      'birthdate': e.target.birthdate.value,
+      'weight': e.target.weight.value,
+      'image': e.target.image.value
+    }
+    fetch(`http://localhost:3000/users/${id}/pets`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res => res.json())
+      .then(pets => {
+        pets.forEach(pet => {
+          const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
+          new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
+          document.getElementById('form').reset()
+        })
+      })
+  }
 }
+
+
+document.getElementById('form').addEventListener("submit", Pet.addPet())
+
