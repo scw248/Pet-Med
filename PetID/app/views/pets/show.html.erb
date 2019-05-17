@@ -1,6 +1,6 @@
-<div class='buttons'>
+<%# <div class='buttons'>
 <%= link_to "Remove Pet", user_pet_path(@pet.user_id, @pet), method: :delete, data: { confirm: "Are You Sure?" } %>
-</div>
+</div> 
 <div class='buttons'>
 <%= link_to 'New Pet', new_user_pet_path(@user) %>
 </div>

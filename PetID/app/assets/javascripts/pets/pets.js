@@ -38,13 +38,14 @@ class Pet {
   }
 
   deletePet(e) {
-    const id = e.target.dataset.id
-    fetch(`http://localhost:3000/users/${id}/pets/${id}`, {
+    let id = document.querySelector('#pet-container').dataset.id
+    let petID = document.querySelector('#current_pet').dataset.id
+    fetch(`http://localhost:3000/users/${id}/pets/${petID}`, {
       method: 'DELETE'
     })
       .then(() => {
         document.getElementById('pet-container')
-          .removeChild(document.getElementById(id))
+          .removeChild(document.getElementById(petID))
       })
   }
 
