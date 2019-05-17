@@ -33,11 +33,9 @@ function addPet(e) {
     }
   })
     .then(res => res.json())
-    .then(pets => {
-      pets.forEach(pet => {
-        const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
-        new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
-        document.getElementById('form').reset()
-      })
+    .then(pet => {
+      const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
+      new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
+      document.getElementById('pet-form').reset()
     })
 }
