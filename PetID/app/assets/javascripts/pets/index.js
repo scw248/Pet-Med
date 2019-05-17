@@ -1,14 +1,14 @@
-window.addEventListener('DOMContentLoaded', (event) => {
-  let id = document.querySelector('#pet-container').dataset.id
-  fetch(`http://localhost:3000/users/${id}/pets.json`)
-    .then(res => res.json())
-    .then(pets => {
-      pets.forEach(pet => {
-        const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
-        new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
-      })
-    })
-})
+// window.addEventListener('DOMContentLoaded', (event) => {
+//   let id = document.querySelector('#pet-container').dataset.id
+//   fetch(`http://localhost:3000/users/${id}/pets.json`)
+//     .then(res => res.json())
+//     .then(pets => {
+//       pets.forEach(pet => {
+//         const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
+//         new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
+//       })
+//     })
+// })
 
 document.querySelector('#form').addEventListener('submit', addPet())
 
