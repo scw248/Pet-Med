@@ -19,7 +19,7 @@
   fetch(`http://localhost:3000/users/${id}/pets/${petID}.json`)
     .then(res => res.json())
     .then(pet => {
-      const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
-      new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
+      const { id, name, animal_type, breed, gender, birthdate, weight} = pet
+      new Pet(id, name, animal_type, breed, gender, birthdate, weight)
     })
 </script>

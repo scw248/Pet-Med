@@ -5,7 +5,7 @@
 
 
 class Pet {
-  constructor(id, name, animal_type, breed, gender, birthdate, weight, image) {
+  constructor(id, name, animal_type, breed, gender, birthdate, weight) {
     this.id = id
     this.name = name
     this.animal_type = animal_type
@@ -13,7 +13,6 @@ class Pet {
     this.gender = gender
     this.birthdate = birthdate
     this.weight = weight
-    this.image = image
     this.render()
   }
 
@@ -21,7 +20,6 @@ class Pet {
     return `
   <div>
     <ul class="image-list-small">
-    <img src="${this.image}"/>
       <div class="details">
       <h3>${this.name}</h3>
         <div class="image-details">

@@ -27,8 +27,6 @@
           <br/>
           <input type="text" name="weight" placeholder="weight"/>
           <br/>
-          <input type="url" name="image_url" placeholder="image_url"/>
-          <br/>
           <input type="submit" id="submit" value="Submit"/>
         </form>
       </div>
@@ -42,8 +40,8 @@
     .then(res => res.json())
     .then(pets => {
       pets.forEach(pet => {
-        const { id, name, animal_type, breed, gender, birthdate, weight, image_url } = pet
-        new Pet(id, name, animal_type, breed, gender, birthdate, weight, image_url)
+        const { id, name, animal_type, breed, gender, birthdate, weight } = pet
+        new Pet(id, name, animal_type, breed, gender, birthdate, weight)
       })
         document.querySelector('#form').addEventListener('submit', addPet)
     })
@@ -60,8 +58,7 @@ function addPet(e) {
     'breed': e.target.breed.value,
     'gender': e.target.gender.value,
     'birthdate': e.target.birthdate.value,
-    'weight': e.target.weight.value,
-    'image': e.target.image_url.value
+    'weight': e.target.weight.value
   }
   let id = document.querySelector('#pet-container').dataset.id
   fetch(`http://localhost:3000/users/${id}/pets`, {
@@ -73,8 +70,8 @@ function addPet(e) {
   })
     .then(res => res.json())
     .then(pet => {
-      const { id, name, animal_type, breed, gender, birthdate, weight, image_url } = pet
-      new Pet(id, name, animal_type, breed, gender, birthdate, weight, image_url)
+      const { id, name, animal_type, breed, gender, birthdate, weight} = pet
+      new Pet(id, name, animal_type, breed, gender, birthdate, weight)
       document.getElementById('pet-form').reset()
     })
 }
