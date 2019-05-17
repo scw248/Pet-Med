@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PetsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     if params[:user_id]
       @pets = User.find(params[:user_id]).pets
@@ -25,12 +26,13 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
-    if @pet.save
-      @user = current_user
-      redirect_to user_pet_path(@user, @pet)
-    else
-      render :new
-    end
+    # if @pet.save
+    @user = current_user
+
+    render json: @pet
+    # else
+    #   render :new
+    # end
   end
 
   def show

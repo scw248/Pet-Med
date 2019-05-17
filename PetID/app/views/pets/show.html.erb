@@ -12,3 +12,14 @@
 <p id='current_pet' data-id="<%= @pet.id%>"></p>
 <div id='pet-container' data-id="<%= current_user.id %>">
 </div>
+
+<script>
+  let id = document.querySelector('#pet-container').dataset.id
+  let petID = document.querySelector('#current_pet').dataset.id
+  fetch(`http://localhost:3000/users/${id}/pets/${petID}.json`)
+    .then(res => res.json())
+    .then(pet => {
+      const { id, name, animal_type, breed, gender, birthdate, weight, image } = pet
+      new Pet(id, name, animal_type, breed, gender, birthdate, weight, image)
+    })
+</script>
