@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-  let id = document.querySelector('#pets-container').dataset.id
+  let id = document.querySelector('#pet-container').dataset.id
   fetch(`http://localhost:3000/users/${id}/pets.json`)
     .then(res => res.json())
     .then(pets => {
@@ -24,7 +24,7 @@ function addPet(e) {
     'weight': e.target.weight.value,
     'image': e.target.image.value
   }
-  let id = document.querySelector('#pets-container').dataset.id
+  let id = document.querySelector('#pet-container').dataset.id
   fetch(`http://localhost:3000/users/${id}/pets`, {
     method: 'POST',
     body: JSON.stringify(data),

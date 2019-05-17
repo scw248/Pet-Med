@@ -43,13 +43,13 @@ class Pet {
       method: 'DELETE'
     })
       .then(() => {
-        document.getElementById('pets-container')
+        document.getElementById('pet-container')
           .removeChild(document.getElementById(id))
       })
   }
 
   render() {
-    const petContainer = document.getElementById('pets-container')
+    const petContainer = document.getElementById('pet-container')
     const petCard = document.createElement('div')
 
     petCard.classList.add('pet-card')
