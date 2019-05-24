@@ -26,10 +26,12 @@ class PetsController < ApplicationController
 
   def create
     @pet = Pet.new(pet_params)
-    # if @pet.save
-    @user = current_user
-
-    render json: @pet
+    @pet.user = current_user
+    if @pet.save
+      render json: @pet
+    else
+      render json: {status: "error", code: 400, message: [@pet.errors.full_messages]}
+    end
     # else
     #   render :new
     # end

@@ -1,5 +1,7 @@
 {
   "name": "PetID",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "moment": "^2.24.0"
+  }
 }

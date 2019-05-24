@@ -19,7 +19,6 @@ class Pet < ApplicationRecord
   validate :validate_age
   validates :weight, presence: true
   validates :weight, numericality: { greater_than: 0 }
-  validates :image, presence: true
   belongs_to :user
   has_many :appointments, through: :user
 

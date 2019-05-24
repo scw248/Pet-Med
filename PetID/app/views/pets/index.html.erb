@@ -5,6 +5,27 @@
   <br>
   <h3>You Currently Do Not Have Any Pets</h3>
   <h5>Click 'New Pet' to Add Yours!</h5>
+
+  <div id='pet-container' data-id="<%= current_user.id %>">
+</div>
+  <div id="form">
+        <h3>New Pet</h3>
+        <form id="pet-form">
+          <input type="text" name="name" placeholder="name"/>
+          <br/>
+          <input type="text" name="animal_type" placeholder="animal_type"/>
+          <br/>
+          <input type="text" name="breed" placeholder="breed"/>
+          <br/>
+          <input type="text" name="gender" placeholder="gender"/>
+          <br/>
+          <input type="date" name="birthdate" placeholder="birthdate"/>
+          <br/>
+          <input type="text" name="weight" placeholder="weight"/>
+          <br/>
+          <input type="submit" id="submit" value="Submit"/>
+        </form>
+      </div>
   <br>
 
 <% else %>
@@ -29,6 +50,9 @@
           <br/>
           <input type="submit" id="submit" value="Submit"/>
         </form>
+        <br>
+        <b><div style="color: red" id='errors'></b>
+        <br>
       </div>
 <br>
 
@@ -40,8 +64,8 @@
     .then(res => res.json())
     .then(pets => {
       pets.forEach(pet => {
-        const { id, name, animal_type, breed, gender, birthdate, weight } = pet
-        new Pet(id, name, animal_type, breed, gender, birthdate, weight)
+        const { id, name, animal_type, breed, gender, birthdate, weight, appointments} = pet
+        new Pet(id, name, animal_type, breed, gender, birthdate, weight, appointments)
       })
         document.querySelector('#form').addEventListener('submit', addPet)
     })
@@ -70,10 +94,16 @@ function addPet(e) {
   })
     .then(res => res.json())
     .then(pet => {
-      const { id, name, animal_type, breed, gender, birthdate, weight} = pet
-      new Pet(id, name, animal_type, breed, gender, birthdate, weight)
+      const { id, name, animal_type, breed, gender, birthdate, weight, appointments} = pet
+      if (id){
+      new Pet(id, name, animal_type, breed, gender, birthdate, weight, appointments)
       document.getElementById('pet-form').reset()
-    })
+    }
+    else {
+      const error = document.getElementById('errors')
+      error.innerHTML = String(pet.message[0])
+      document.getElementById('pet-form').reset()
+    }
+})
 }
-
 </script>
