@@ -70,11 +70,12 @@
         document.querySelector('#form').addEventListener('submit', addPet)
     })
 
-
-
-
 function addPet(e) {
   e.preventDefault()
+
+  let errorList = document.getElementById('errors')
+  errorList.innerHTML = ''
+
   let data = {
 
     'name': e.target.name.value,
@@ -101,9 +102,10 @@ function addPet(e) {
     }
     else {
       const error = document.getElementById('errors')
-      error.innerHTML = String(pet.message[0])
-      document.getElementById('pet-form').reset()
-    }
+      pet.message.forEach(message => {
+        error.innerHTML += `<p>${message}</p>`
+      })
+}
 })
 }
 </script>

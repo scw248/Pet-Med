@@ -29,9 +29,11 @@ class Pet {
           <p>Weight: ${this.weight}</p>
           <p>Birthday: ${this.birthdate}</p>
           <button class="delete" data-id="${this.id}">Delete</button>
+          <br>
+          <br>
+          <div>Appointments</div>
           <p>${this.appointments.map(appt => {
       return (
-        appt.reason_for_visit,
         new Date(appt.date_time).toLocaleDateString('en-GB', {
           day: 'numeric',
           month: 'short',

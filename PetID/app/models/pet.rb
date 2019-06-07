@@ -45,7 +45,7 @@ class Pet < ApplicationRecord
   private
 
   def validate_age
-    if birthdate > 1.day.ago
+    if birthdate && birthdate > 1.day.ago
       errors.add(:birthdate, 'Your Pet Should Be Over 1 Day Old.')
     end
   end
