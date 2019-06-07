@@ -72,12 +72,10 @@
 
 function addPet(e) {
   e.preventDefault()
-
   let errorList = document.getElementById('errors')
   errorList.innerHTML = ''
 
   let data = {
-
     'name': e.target.name.value,
     'animal_type': e.target.animal_type.value,
     'breed': e.target.breed.value,
@@ -85,6 +83,7 @@ function addPet(e) {
     'birthdate': e.target.birthdate.value,
     'weight': e.target.weight.value
   }
+  
   let id = document.querySelector('#pet-container').dataset.id
   fetch(`http://localhost:3000/users/${id}/pets`, {
     method: 'POST',

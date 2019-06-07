@@ -32,9 +32,6 @@ class PetsController < ApplicationController
     else
       render json: {status: "error", code: 400, message: [@pet.errors.full_messages]}
     end
-    # else
-    #   render :new
-    # end
   end
 
   def show

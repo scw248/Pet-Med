@@ -1,9 +1,3 @@
-// # Place all the behaviors and hooks related to the matching controller here.
-// # All this logic will automatically be available in application.js.
-// # You can use CoffeeScript in this file: http://coffeescript.org/
-
-
-
 class Pet {
   constructor(id, name, animal_type, breed, gender, birthdate, weight, appointments) {
     this.id = id
@@ -48,7 +42,7 @@ class Pet {
   <br>`
   }
 
-  deletePet(e) {
+  deletePet() {
     let id = document.querySelector('#pet-container').dataset.id
     let petID = document.querySelector('#current_pet').dataset.id
     fetch(`http://localhost:3000/users/${id}/pets/${petID}`, {
@@ -72,18 +66,6 @@ class Pet {
       if (e.target.className.includes('delete')) this.deletePet(e)
     })
   }
-}
-
-
-function formatDate(date) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? 'pm' : 'am';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0' + minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
-  return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear() + "  " + strTime;
 }
 
 
