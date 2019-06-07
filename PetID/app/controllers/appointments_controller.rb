@@ -41,7 +41,8 @@ class AppointmentsController < ApplicationController
         redirect_to new_user_registration_path, flash[:notice] = 'User not found.'
       else
         @appointment = user.appointments.find_by(id: params[:id])
-        redirect_to user_appointments_path(user), flash[:notice] = 'Appointment not found.' if @appointment.nil?
+        redirect_to user_appointments_path(user), 
+        flash[:notice] = 'Appointment not found.' if @appointment.nil?
       end
     else
       @appointment = appointment
