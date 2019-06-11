@@ -9,13 +9,13 @@
   <br>
 
 <% else %>
-
+  
+  <h2>Your Upcoming Appointments</h2>
+  <div>
   <div class="buttons">
   <%= link_to 'New Appointment', new_user_appointment_path(@user)%>
   </div>
   <br>
-  <h2>Your Upcoming Appointments</h2>
-  <div>
   <% @appointments.each do |appointment|%>
   <p><b>Appt for:</b> <%= appointment.pet.name %></p>
   <p><b>Reason for Visit: </b><%= link_to appointment.reason_for_visit, user_appointment_path(@user, appointment) %></p>
