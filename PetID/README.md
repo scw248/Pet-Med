@@ -4,7 +4,7 @@ veterinary providers.
 
 ## Demo
 
-https://www.youtube.com/watch?v=0lMR8hOkkVc&t=2s
+https://youtu.be/-A7fODQ2vmE
 
 ## Getting Started
 Feel free to fork and clone this application at https://github.com/scw248/Pet-ID
